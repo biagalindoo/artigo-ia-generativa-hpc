@@ -10,7 +10,7 @@
 
 \sloppy
 
-\title{Avaliação de Infraestrutura de Hardware para Cargas de IA Generativa em um Contexto de Computação de Alto Desempenho}
+\title{Análise de Desempenho de Cargas Matriciais para IA Generativa em Ambiente Computacional Local}
 
 \author{Nome do Autor 1\inst{1}, Nome do Autor 2\inst{1}, Nome do Autor 3\inst{1}}
 
@@ -24,11 +24,11 @@
 \maketitle
 
 \begin{abstract}
-Generative artificial intelligence workloads demand computational infrastructure with high processing, memory, storage, and communication capacity. This paper presents an experimental analysis of a local hardware environment for a representative matrix multiplication workload, relating the results to concepts of computer architecture and high-performance computing. The evaluated machine contains an Intel Core i7-1360P processor, 32 GB of RAM, NVMe storage, and integrated Intel Iris Xe graphics. The benchmark was implemented with Python 3.11.9 and NumPy 2.1.2 using dense float32 matrices of orders 512, 1024, and 2048. The measured average performance increased from 92.227 GFLOPS to 306.783 GFLOPS as the matrix size grew. The results provide an educational baseline for discussing how hardware infrastructure affects computational workloads associated with generative AI.
+Generative AI systems rely heavily on matrix and tensor operations, which makes hardware performance an important factor even in small-scale experiments. This paper evaluates a local computing environment through a reproducible matrix multiplication benchmark implemented in Python 3.11.9 with NumPy 2.1.2. The evaluated machine uses an Intel Core i7-1360P processor, 32 GB of RAM, NVMe storage, and integrated Intel Iris Xe graphics. Dense float32 matrices of orders 512, 1024, and 2048 were executed with three repetitions per size. The average estimated performance increased from 92.227 GFLOPS to 306.783 GFLOPS as the matrix size grew. The results do not represent a full generative model execution, but provide a practical baseline for discussing the relationship between local hardware infrastructure, numerical workloads, and introductory high-performance computing concepts.
 \end{abstract}
 
 \begin{resumo}
-Cargas de inteligência artificial generativa demandam infraestrutura computacional com alta capacidade de processamento, memória, armazenamento e comunicação. Este artigo apresenta uma análise experimental de um ambiente local de hardware a partir de uma carga representativa de multiplicação de matrizes, relacionando os resultados a conceitos de arquitetura de computadores e computação de alto desempenho. A máquina avaliada possui processador Intel Core i7-1360P, 32 GB de RAM, armazenamento NVMe e GPU integrada Intel Iris Xe. O benchmark foi implementado com Python 3.11.9 e NumPy 2.1.2, usando matrizes densas em \textit{float32} de ordens 512, 1024 e 2048. O desempenho médio medido cresceu de 92,227 GFLOPS para 306,783 GFLOPS conforme o tamanho da matriz aumentou. Os resultados fornecem uma linha de base educacional para discutir como a infraestrutura de hardware afeta cargas computacionais associadas à IA generativa.
+Sistemas de IA generativa dependem fortemente de operações matriciais e tensoriais, o que torna o desempenho da infraestrutura de hardware um fator relevante mesmo em experimentos de pequena escala. Este artigo avalia um ambiente computacional local por meio de um benchmark reprodutível de multiplicação de matrizes implementado em Python 3.11.9 com NumPy 2.1.2. A máquina avaliada utiliza processador Intel Core i7-1360P, 32 GB de RAM, armazenamento NVMe e GPU integrada Intel Iris Xe. Foram executadas matrizes densas em \textit{float32} de ordens 512, 1024 e 2048, com três repetições por tamanho. O desempenho médio estimado cresceu de 92,227 GFLOPS para 306,783 GFLOPS conforme o tamanho da matriz aumentou. Os resultados não representam a execução de um modelo generativo completo, mas fornecem uma linha de base prática para discutir a relação entre infraestrutura local de hardware, cargas numéricas e conceitos introdutórios de computação de alto desempenho.
 \end{resumo}
 
 \input{sections/01-introducao}
