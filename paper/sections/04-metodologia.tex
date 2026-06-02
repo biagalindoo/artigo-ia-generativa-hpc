@@ -9,11 +9,15 @@ Na caracterização do ambiente, serão registrados os componentes de hardware e
 
 Na definição da carga experimental, será selecionada uma tarefa relacionada à IA generativa ou uma carga computacional representativa. Possíveis opções incluem inferência com modelo de linguagem de pequeno porte, execução de operação matricial/tensorial, benchmark sintético ou comparação entre execução com diferentes configurações de recursos. A carga escolhida deverá ser compatível com as limitações do laboratório, evitando a necessidade de treinamento de modelos de grande escala.
 
+Neste estudo inicial, a carga experimental adotada foi a multiplicação de matrizes densas em precisão \textit{float32}, implementada com NumPy 2.1.2 em Python 3.11.9. Embora não seja uma aplicação completa de IA generativa, essa operação é representativa porque modelos baseados em redes neurais dependem intensamente de operações matriciais e tensoriais durante treinamento e inferência.
+
 \subsection{Métricas coletadas}
 
 Durante a coleta, serão medidas métricas como tempo de execução, uso de CPU, uso de memória, utilização de GPU, vazão de armazenamento e temperatura, conforme a disponibilidade das ferramentas do laboratório. Cada experimento deverá ser repetido quando possível, registrando variações e condições de execução. Os dados coletados serão mantidos em formato tabular ou em logs, de modo a facilitar a validação e a posterior construção de gráficos e tabelas.
 
 As métricas serão organizadas em dois grupos. O primeiro grupo descreve o ambiente, incluindo componentes físicos, sistema operacional e ferramentas. O segundo grupo descreve o comportamento da carga durante a execução, incluindo tempo total, utilização média ou máxima dos recursos e observações sobre gargalos percebidos.
+
+Foram executadas matrizes de ordem 512, 1024 e 2048, com três repetições para cada tamanho. A taxa estimada de desempenho foi calculada pela aproximação $2n^3/t$, em que $n$ é a ordem da matriz e $t$ é o tempo de execução em segundos.
 
 \subsection{Critérios de análise}
 

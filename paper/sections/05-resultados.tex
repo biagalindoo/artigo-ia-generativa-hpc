@@ -31,13 +31,13 @@ Rede & InfiniBand 400 Gb/s ou Ethernet 200 Gb/s \\
 \toprule
 \textbf{Item} & \textbf{Descrição} \\
 \midrule
-CPU & A preencher \\
-Memória RAM & A preencher \\
-GPU & A preencher \\
-Armazenamento & A preencher \\
-Sistema operacional & A preencher \\
-Ferramentas de medição & A preencher \\
-Carga experimental & A preencher \\
+CPU & Intel Core i7-1360P, 12 núcleos e 16 threads \\
+Memória RAM & 32 GB \\
+GPU & Intel Iris Xe Graphics integrada \\
+Armazenamento & NVMe KIOXIA 1024 GB \\
+Sistema operacional & Windows 11 Pro 64 bits \\
+Ferramentas de medição & Python 3.11.9 e NumPy 2.1.2 \\
+Carga experimental & Multiplicação de matrizes \textit{float32} \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -59,4 +59,19 @@ Execução 1 & Observação principal & A preencher \\
 \end{tabular}
 \end{table}
 
-Após o preenchimento das tabelas, os resultados serão analisados buscando responder se a carga executada foi limitada principalmente por processamento, memória, armazenamento, aceleração ou outro fator observado durante os testes.
+\begin{table}[ht]
+\centering
+\caption{Resultados reais do benchmark de multiplicação de matrizes}
+\label{tab:benchmark-matriz}
+\begin{tabular}{rrrr}
+\toprule
+\textbf{Ordem da matriz} & \textbf{Repetições} & \textbf{Tempo médio (s)} & \textbf{GFLOPS médio} \\
+\midrule
+512 & 3 & 0,003135 & 92,227 \\
+1024 & 3 & 0,009491 & 229,243 \\
+2048 & 3 & 0,056025 & 306,783 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Os resultados indicam aumento da taxa estimada de GFLOPS conforme a ordem da matriz cresce, o que sugere melhor aproveitamento da biblioteca numérica em matrizes maiores. Como a GPU integrada não foi utilizada diretamente pelo benchmark, os valores representam uma medição inicial em CPU e servem como linha de base para comparações futuras com aceleração por GPU ou execução em infraestrutura HPC.
