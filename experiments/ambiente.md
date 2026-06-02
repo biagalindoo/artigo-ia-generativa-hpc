@@ -6,7 +6,7 @@ Este arquivo registra o ambiente usado nos experimentos do artigo.
 
 - **Local:** máquina local do autor
 - **Data da coleta:** 2 jun. 2026
-- **Responsáveis pela coleta:** a preencher
+- **Responsáveis pela coleta:** autor/equipe do artigo
 
 ## Hardware
 
