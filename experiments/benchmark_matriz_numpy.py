@@ -12,10 +12,13 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "data" / "benchmark_matriz_numpy.csv"
 
 
-def benchmark(size: int, repetitions: int = 3) -> list[dict[str, str]]:
+def benchmark(size: int, repetitions: int = 30, warmups: int = 5) -> list[dict[str, str]]:
     rng = np.random.default_rng(42)
     a = rng.random((size, size), dtype=np.float32)
     b = rng.random((size, size), dtype=np.float32)
+
+    for _ in range(warmups):
+        _ = a @ b
 
     rows: list[dict[str, str]] = []
     for rep in range(1, repetitions + 1):
@@ -29,6 +32,7 @@ def benchmark(size: int, repetitions: int = 3) -> list[dict[str, str]]:
             {
                 "size": str(size),
                 "repetition": str(rep),
+                "warmups_discarded": str(warmups),
                 "elapsed_seconds": f"{elapsed:.6f}",
                 "estimated_gflops": f"{gflops:.3f}",
                 "checksum": f"{float(c[0, 0]):.6f}",
@@ -49,6 +53,7 @@ def main() -> None:
             fieldnames=[
                 "size",
                 "repetition",
+                "warmups_discarded",
                 "elapsed_seconds",
                 "estimated_gflops",
                 "checksum",
@@ -60,6 +65,8 @@ def main() -> None:
     print(f"Arquivo gerado: {OUT}")
     print(f"Python: {platform.python_version()}")
     print(f"NumPy: {np.__version__}")
+    print("Repetições válidas por tamanho: 30")
+    print("Warm-ups descartados por tamanho: 5")
 
 
 if __name__ == "__main__":

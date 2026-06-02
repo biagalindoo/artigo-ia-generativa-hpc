@@ -17,10 +17,12 @@ Durante a coleta, mediu-se o tempo de execução de cada multiplicação de matr
 
 As métricas foram organizadas em dois grupos. O primeiro descreve o ambiente, incluindo componentes físicos, sistema operacional e ferramentas. O segundo descreve o comportamento da carga durante a execução, incluindo tempo total, média de GFLOPS e desvio padrão entre repetições.
 
-Foram executadas matrizes de ordem 512, 1024 e 2048, com três repetições para cada tamanho. A taxa estimada de desempenho foi calculada pela aproximação $2n^3/t$, em que $n$ é a ordem da matriz e $t$ é o tempo de execução em segundos. O script de execução utiliza semente pseudoaleatória fixa, de modo que as matrizes geradas possam ser reproduzidas.
+Foram executadas matrizes de ordem 512, 1024 e 2048, com 30 repetições válidas para cada tamanho. Antes das medições, cinco execuções de aquecimento foram descartadas para reduzir o efeito de inicialização da biblioteca numérica e do ambiente de execução. A taxa estimada de desempenho foi calculada pela aproximação $2n^3/t$, em que $n$ é a ordem da matriz e $t$ é o tempo de execução em segundos. O script de execução utiliza semente pseudoaleatória fixa, de modo que as matrizes geradas possam ser reproduzidas.
+
+Durante os testes, a mesma máquina, o mesmo sistema operacional e as mesmas versões de Python e bibliotecas foram mantidos. Não foram executadas comparações em paralelo com outras cargas intencionais. Ainda assim, por se tratar de um sistema operacional de uso geral, processos em segundo plano, política de energia, uso de swap e variações térmicas não foram controlados com o mesmo rigor de um ambiente de laboratório dedicado.
 
 \subsection{Critérios de análise}
 
 Por fim, os dados foram organizados em tabelas e analisados com foco na identificação de tendências de desempenho. A análise buscou relacionar os resultados às características da infraestrutura e aos conceitos de HPC discutidos na fundamentação teórica.
 
-Como apenas uma configuração experimental foi avaliada, a análise teve caráter descritivo. O arquivo bruto \texttt{data/benchmark\_matriz\_numpy.csv} armazena as repetições individuais, enquanto \texttt{data/benchmark\_matriz\_resumo.csv} contém médias e desvios padrão. A figura apresentada nos resultados foi gerada pelo script \texttt{experiments/analisar\_benchmark\_matriz.py}.
+Como apenas uma configuração experimental foi avaliada, a análise teve caráter descritivo e comparou os tamanhos de matriz entre si. Foram calculados média, desvio padrão e intervalo de confiança de 95\% para cada condição. Também foi aplicado teste $t$ de Welch entre condições adjacentes, adotando $\alpha=0{,}05$. O arquivo bruto \texttt{data/benchmark\_matriz\_numpy.csv} armazena as repetições individuais, enquanto \texttt{data/benchmark\_matriz\_resumo.csv} contém médias, desvios padrão e intervalos de confiança. Os testes estatísticos foram registrados em \texttt{data/benchmark\_matriz\_testes.csv}.

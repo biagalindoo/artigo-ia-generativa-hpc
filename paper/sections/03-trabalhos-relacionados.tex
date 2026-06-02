@@ -1,8 +1,6 @@
 \section{Trabalhos Relacionados}
 \label{sec:relacionados}
 
-A literatura em arquitetura de computadores e HPC destaca a importância de avaliar sistemas de forma integrada, considerando processadores, memória, interconexões, armazenamento e aceleradores~\cite{hennessy2019golden}. Essa visão é útil para este artigo porque o desempenho observado em uma carga matricial não depende apenas do processador, mas também das bibliotecas numéricas e da forma como os dados são movimentados durante a execução.
-
 Trabalhos sobre benchmarks de HPC, como avaliações baseadas em LINPACK, mostram a relevância de métricas padronizadas para comparar sistemas~\cite{dongarra2003linpack}. Embora LINPACK não represente sozinho todas as cargas modernas, ele permanece relevante por medir desempenho em operações de álgebra linear, uma família de operações também presente em redes neurais.
 
 Um trabalho diretamente relacionado ao experimento deste artigo é o de Goto e van de Geijn~\cite{goto2008anatomy}, que discute como multiplicações de matrizes de alto desempenho dependem de bloqueio, uso eficiente de cache e movimentação de dados. Essa discussão ajuda a interpretar por que matrizes maiores podem apresentar melhor aproveitamento das rotinas numéricas: parte do desempenho vem menos da operação matemática isolada e mais da forma como a implementação organiza dados e instruções na arquitetura disponível.

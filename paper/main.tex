@@ -10,13 +10,13 @@
 
 \sloppy
 
-\title{Análise de Desempenho de Cargas Matriciais para IA Generativa em Ambiente Computacional Local}
+\title{Benchmark Reprodutível de Cargas Matriciais para IA Generativa em CPU Local}
 
-\author{Nome do Autor 1\inst{1}, Nome do Autor 2\inst{1}, Nome do Autor 3\inst{1}}
+\author{Beatriz Galindo\inst{1}, Breno Santiago\inst{1}, Victor Paz\inst{1}}
 
-\address{Instituição de Ensino -- Curso/Departamento\\
-  Cidade -- Estado -- Brasil
-  \email{\{autor1,autor2,autor3\}@email.com}
+\address{CESAR School -- Ciência da Computação\\
+  Recife -- Pernambuco -- Brasil
+  \email{}
 }
 
 \begin{document}
@@ -24,12 +24,14 @@
 \maketitle
 
 \begin{abstract}
-Generative AI systems rely heavily on matrix and tensor operations, which makes hardware performance an important factor even in small-scale experiments. This paper evaluates a local computing environment through a reproducible matrix multiplication benchmark implemented in Python 3.11.9 with NumPy 2.1.2. The evaluated machine uses an Intel Core i7-1360P processor, 32 GB of RAM, NVMe storage, and integrated Intel Iris Xe graphics. Dense float32 matrices of orders 512, 1024, and 2048 were executed with three repetitions per size. The average estimated performance increased from 92.227 GFLOPS to 306.783 GFLOPS as the matrix size grew. The results do not represent a full generative model execution, but provide a practical baseline for discussing the relationship between local hardware infrastructure, numerical workloads, and introductory high-performance computing concepts.
+Generative AI systems rely heavily on matrix and tensor operations, which makes hardware performance an important factor even in small-scale experiments. This paper evaluates a local computing environment through a reproducible matrix multiplication benchmark implemented in Python 3.11.9 with NumPy 2.1.2. The evaluated machine uses an Intel Core i7-1360P processor, 32 GB of RAM, NVMe storage, and integrated Intel Iris Xe graphics. Dense float32 matrices of orders 512, 1024, and 2048 were executed with 30 valid repetitions per size after discarding five warm-up executions. The average estimated performance increased from 150.768 GFLOPS to 373.168 GFLOPS as the matrix size grew. The results do not represent a full generative model execution, but provide a practical baseline for discussing the relationship between local hardware infrastructure, numerical workloads, and introductory high-performance computing concepts.
 \end{abstract}
 
 \begin{resumo}
-Sistemas de IA generativa dependem fortemente de operações matriciais e tensoriais, o que torna o desempenho da infraestrutura de hardware um fator relevante mesmo em experimentos de pequena escala. Este artigo avalia um ambiente computacional local por meio de um benchmark reprodutível de multiplicação de matrizes implementado em Python 3.11.9 com NumPy 2.1.2. A máquina avaliada utiliza processador Intel Core i7-1360P, 32 GB de RAM, armazenamento NVMe e GPU integrada Intel Iris Xe. Foram executadas matrizes densas em \textit{float32} de ordens 512, 1024 e 2048, com três repetições por tamanho. O desempenho médio estimado cresceu de 92,227 GFLOPS para 306,783 GFLOPS conforme o tamanho da matriz aumentou. Os resultados não representam a execução de um modelo generativo completo, mas fornecem uma linha de base prática para discutir a relação entre infraestrutura local de hardware, cargas numéricas e conceitos introdutórios de computação de alto desempenho.
+Sistemas de IA generativa dependem fortemente de operações matriciais e tensoriais, o que torna o desempenho da infraestrutura de hardware um fator relevante mesmo em experimentos de pequena escala. Este artigo avalia um ambiente computacional local por meio de um benchmark reprodutível de multiplicação de matrizes implementado em Python 3.11.9 com NumPy 2.1.2. A máquina avaliada utiliza processador Intel Core i7-1360P, 32 GB de RAM, armazenamento NVMe e GPU integrada Intel Iris Xe. Foram executadas matrizes densas em \textit{float32} de ordens 512, 1024 e 2048, com 30 repetições válidas por tamanho após descarte de cinco execuções de aquecimento. O desempenho médio estimado cresceu de 150,768 GFLOPS para 373,168 GFLOPS conforme o tamanho da matriz aumentou. Os resultados não representam a execução de um modelo generativo completo, mas fornecem uma linha de base prática para discutir a relação entre infraestrutura local de hardware, cargas numéricas e conceitos introdutórios de computação de alto desempenho.
 \end{resumo}
+
+\noindent\textbf{Palavras-chave:} IA generativa; HPC; multiplicação de matrizes; benchmark; infraestrutura de hardware.
 
 \input{sections/01-introducao}
 \input{sections/02-fundamentacao}

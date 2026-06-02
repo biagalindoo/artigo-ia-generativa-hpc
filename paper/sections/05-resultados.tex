@@ -35,8 +35,8 @@ CPU & Intel Core i7-1360P, 12 núcleos e 16 threads \\
 Memória RAM & 32 GB \\
 GPU & Intel Iris Xe Graphics integrada \\
 Armazenamento & NVMe KIOXIA 1024 GB \\
-Sistema operacional & Windows 11 Pro 64 bits \\
-Ferramentas de medição & Python 3.11.9 e NumPy 2.1.2 \\
+Sistema operacional & Windows 11 Pro 10.0.26200, 64 bits \\
+Ferramentas de medição & Python 3.11.9, NumPy 2.1.2, SciPy 1.14.1 \\
 Carga experimental & Multiplicação de matrizes \textit{float32} \\
 \bottomrule
 \end{tabular}
@@ -48,11 +48,25 @@ Carga experimental & Multiplicação de matrizes \textit{float32} \\
 \label{tab:benchmark-matriz}
 \begin{tabular}{rrrrr}
 \toprule
-\textbf{Ordem} & \textbf{Repetições} & \textbf{Tempo médio (s)} & \textbf{GFLOPS médio} & \textbf{Desvio GFLOPS} \\
+\textbf{Ordem} & \textbf{n} & \textbf{Tempo médio (s)} & \textbf{GFLOPS médio} & \textbf{IC95 GFLOPS} \\
 \midrule
-512 & 3 & 0,003135 & 92,227 & 27,653 \\
-1024 & 3 & 0,009491 & 229,243 & 32,185 \\
-2048 & 3 & 0,056025 & 306,783 & 8,005 \\
+512 & 30 & 0,001895 & 150,768 $\pm$ 36,307 & $\pm$ 13,557 \\
+1024 & 30 & 0,006228 & 350,665 $\pm$ 45,840 & $\pm$ 17,117 \\
+2048 & 30 & 0,046165 & 373,168 $\pm$ 19,745 & $\pm$ 7,373 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\caption{Testes de hipótese entre condições adjacentes}
+\label{tab:testes}
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Comparação} & \textbf{Teste} & \textbf{p-valor} & \textbf{Rejeita $H_0$?} \\
+\midrule
+512 vs. 1024 & Welch $t$ & $1{,}48 \times 10^{-25}$ & Sim \\
+1024 vs. 2048 & Welch $t$ & 0,017966 & Sim \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -60,8 +74,8 @@ Carga experimental & Multiplicação de matrizes \textit{float32} \\
 \begin{figure}[ht]
 \centering
 \includegraphics[width=.85\textwidth]{figures/benchmark-gflops.png}
-\caption{Desempenho médio em GFLOPS para cada ordem de matriz avaliada.}
+\caption{Desempenho médio em GFLOPS para cada ordem de matriz avaliada, com barras de erro representando IC95.}
 \label{fig:benchmark-gflops}
 \end{figure}
 
-Os resultados indicam aumento da taxa estimada de GFLOPS conforme a ordem da matriz cresce, o que sugere melhor aproveitamento da biblioteca numérica em matrizes maiores. Como a GPU integrada não foi utilizada diretamente pelo benchmark, os valores representam uma medição inicial em CPU e servem como linha de base para comparações futuras com aceleração por GPU ou execução em infraestrutura HPC.
+Os resultados indicam aumento da taxa estimada de GFLOPS conforme a ordem da matriz cresce, o que sugere melhor aproveitamento da biblioteca numérica em matrizes maiores. Os testes de hipótese indicaram diferença estatisticamente significativa entre as condições adjacentes avaliadas. Como a GPU integrada não foi utilizada diretamente pelo benchmark, os valores representam uma medição inicial em CPU e servem como linha de base para comparações futuras com aceleração por GPU ou execução em infraestrutura HPC.
