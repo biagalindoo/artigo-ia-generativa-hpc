@@ -1,0 +1,45 @@
+\documentclass[12pt]{article}
+
+\usepackage{sbc-template}
+\usepackage{graphicx,url}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{booktabs}
+\usepackage{array}
+
+\sloppy
+
+\title{Avaliação de Infraestrutura de Hardware para Cargas de IA Generativa em um Contexto de Computação de Alto Desempenho}
+
+\author{Nome do Autor 1\inst{1}, Nome do Autor 2\inst{1}, Nome do Autor 3\inst{1}}
+
+\address{Instituição de Ensino -- Curso/Departamento\\
+  Cidade -- Estado -- Brasil
+  \email{\{autor1,autor2,autor3\}@email.com}
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Generative artificial intelligence workloads demand computational infrastructure with high processing, memory, storage, and communication capacity. This paper proposes an experimental analysis of how hardware characteristics observed in a laboratory environment influence the execution of workloads related to generative AI in an introductory high-performance computing context. The study characterizes the execution environment, collects technical metrics, and discusses bottlenecks associated with CPU, memory, storage, and acceleration resources. The expected contribution is an educational and methodological view of the relationship between computer architecture, hardware infrastructure, and generative AI workloads.
+\end{abstract}
+
+\begin{resumo}
+Cargas de inteligência artificial generativa demandam infraestrutura computacional com alta capacidade de processamento, memória, armazenamento e comunicação. Este artigo propõe uma análise experimental de como características de hardware observadas em ambiente de laboratório influenciam a execução de cargas relacionadas à IA generativa em um contexto introdutório de computação de alto desempenho. O estudo caracteriza o ambiente de execução, coleta métricas técnicas e discute gargalos associados a CPU, memória, armazenamento e recursos de aceleração. A contribuição esperada é uma visão educacional e metodológica da relação entre arquitetura de computadores, infraestrutura de hardware e cargas de IA generativa.
+\end{resumo}
+
+\input{sections/01-introducao}
+\input{sections/02-fundamentacao}
+\input{sections/03-trabalhos-relacionados}
+\input{sections/04-metodologia}
+\input{sections/05-resultados}
+\input{sections/06-discussao}
+\input{sections/07-conclusao}
+
+\bibliographystyle{sbc}
+\bibliography{references}
+
+\end{document}
