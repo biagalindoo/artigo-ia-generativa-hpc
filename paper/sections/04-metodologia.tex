@@ -3,24 +3,24 @@
 
 \subsection{Desenho experimental}
 
-A metodologia do trabalho será organizada em quatro etapas: caracterização do ambiente, definição da carga experimental, coleta de métricas e análise dos resultados. A escolha por esse fluxo busca garantir reprodutibilidade mínima, permitindo que os resultados sejam interpretados a partir das condições reais de execução observadas em laboratório.
+A metodologia do trabalho foi organizada em quatro etapas: caracterização do ambiente, definição da carga experimental, coleta de métricas e análise dos resultados. A escolha por esse fluxo buscou garantir reprodutibilidade mínima, permitindo que os resultados fossem interpretados a partir das condições reais de execução observadas.
 
-Na caracterização do ambiente, serão registrados os componentes de hardware e software utilizados nos experimentos. Devem ser documentados processador, memória principal, armazenamento, GPU quando disponível, sistema operacional, bibliotecas, ferramentas de monitoramento e versões relevantes.
+Na caracterização do ambiente, foram registrados os componentes de hardware e software utilizados no experimento, incluindo processador, memória principal, armazenamento, GPU integrada, sistema operacional, bibliotecas e versões relevantes.
 
-Na definição da carga experimental, será selecionada uma tarefa relacionada à IA generativa ou uma carga computacional representativa. Possíveis opções incluem inferência com modelo de linguagem de pequeno porte, execução de operação matricial/tensorial, benchmark sintético ou comparação entre execução com diferentes configurações de recursos. A carga escolhida deverá ser compatível com as limitações do laboratório, evitando a necessidade de treinamento de modelos de grande escala.
+Na definição da carga experimental, optou-se por uma tarefa computacional representativa em vez de executar treinamento de modelo generativo de grande escala. Essa decisão tornou o experimento compatível com uma máquina local e permitiu isolar uma operação central em redes neurais: a multiplicação de matrizes.
 
 Neste estudo inicial, a carga experimental adotada foi a multiplicação de matrizes densas em precisão \textit{float32}, implementada com NumPy 2.1.2 em Python 3.11.9. Embora não seja uma aplicação completa de IA generativa, essa operação é representativa porque modelos baseados em redes neurais dependem intensamente de operações matriciais e tensoriais durante treinamento e inferência.
 
 \subsection{Métricas coletadas}
 
-Durante a coleta, serão medidas métricas como tempo de execução, uso de CPU, uso de memória, utilização de GPU, vazão de armazenamento e temperatura, conforme a disponibilidade das ferramentas do laboratório. Cada experimento deverá ser repetido quando possível, registrando variações e condições de execução. Os dados coletados serão mantidos em formato tabular ou em logs, de modo a facilitar a validação e a posterior construção de gráficos e tabelas.
+Durante a coleta, mediu-se o tempo de execução de cada multiplicação de matrizes e calculou-se a taxa estimada de GFLOPS. Cada tamanho de matriz foi executado três vezes. Os dados brutos foram armazenados em formato CSV no repositório, permitindo inspeção e reprocessamento posterior.
 
-As métricas serão organizadas em dois grupos. O primeiro grupo descreve o ambiente, incluindo componentes físicos, sistema operacional e ferramentas. O segundo grupo descreve o comportamento da carga durante a execução, incluindo tempo total, utilização média ou máxima dos recursos e observações sobre gargalos percebidos.
+As métricas foram organizadas em dois grupos. O primeiro descreve o ambiente, incluindo componentes físicos, sistema operacional e ferramentas. O segundo descreve o comportamento da carga durante a execução, incluindo tempo total, média de GFLOPS e desvio padrão entre repetições.
 
-Foram executadas matrizes de ordem 512, 1024 e 2048, com três repetições para cada tamanho. A taxa estimada de desempenho foi calculada pela aproximação $2n^3/t$, em que $n$ é a ordem da matriz e $t$ é o tempo de execução em segundos.
+Foram executadas matrizes de ordem 512, 1024 e 2048, com três repetições para cada tamanho. A taxa estimada de desempenho foi calculada pela aproximação $2n^3/t$, em que $n$ é a ordem da matriz e $t$ é o tempo de execução em segundos. O script de execução utiliza semente pseudoaleatória fixa, de modo que as matrizes geradas possam ser reproduzidas.
 
 \subsection{Critérios de análise}
 
-Por fim, os dados serão organizados em tabelas e analisados com foco na identificação de gargalos. A análise buscará relacionar os resultados às características da infraestrutura e aos conceitos de HPC discutidos na fundamentação teórica.
+Por fim, os dados foram organizados em tabelas e analisados com foco na identificação de tendências de desempenho. A análise buscou relacionar os resultados às características da infraestrutura e aos conceitos de HPC discutidos na fundamentação teórica.
 
-Quando houver mais de uma configuração experimental, a comparação será feita observando variação de tempo de execução, estabilidade da execução, consumo de recursos e limitações encontradas. Caso apenas uma configuração esteja disponível, a análise terá caráter descritivo, enfatizando a interpretação dos gargalos observados no ambiente real.
+Como apenas uma configuração experimental foi avaliada, a análise teve caráter descritivo. O arquivo bruto `data/benchmark_matriz_numpy.csv` armazena as repetições individuais, enquanto `data/benchmark_matriz_resumo.csv` contém médias e desvios padrão. A figura apresentada nos resultados foi gerada pelo script `experiments/analisar_benchmark_matriz.py`.
