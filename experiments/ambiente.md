@@ -27,8 +27,8 @@ Este arquivo registra o ambiente usado nos experimentos do artigo.
 |---|---|
 | Sistema operacional | Microsoft Windows 11 Pro 10.0.26200, 64 bits |
 | Linguagem/runtime | Python 3.11.9 |
-| Bibliotecas | NumPy 2.1.2 |
-| Ferramentas de medição | Script `experiments/benchmark_matriz_numpy.py` |
+| Bibliotecas | NumPy 2.1.2; Matplotlib 3.10.9 |
+| Ferramentas de medição | Scripts `experiments/benchmark_matriz_numpy.py` e `experiments/analisar_benchmark_matriz.py` |
 | Ferramenta de IA generativa | Não utilizada diretamente; carga matricial representativa |
 
 ## Observações

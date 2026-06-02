@@ -1,0 +1,4 @@
+size,repetitions,elapsed_mean_seconds,elapsed_stdev_seconds,gflops_mean,gflops_stdev
+512,3,0.003135,0.001125,92.227,27.653
+1024,3,0.009491,0.001321,229.243,32.185
+2048,3,0.056025,0.001444,306.783,8.005

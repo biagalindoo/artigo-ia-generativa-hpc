@@ -17,3 +17,6 @@
 .idea/
 *.swp
 *.tmp
+
+# Local scratch/cache
+work/

@@ -46,15 +46,22 @@ Carga experimental & Multiplicação de matrizes \textit{float32} \\
 \centering
 \caption{Resultados reais do benchmark de multiplicação de matrizes}
 \label{tab:benchmark-matriz}
-\begin{tabular}{rrrr}
+\begin{tabular}{rrrrr}
 \toprule
-\textbf{Ordem da matriz} & \textbf{Repetições} & \textbf{Tempo médio (s)} & \textbf{GFLOPS médio} \\
+\textbf{Ordem} & \textbf{Repetições} & \textbf{Tempo médio (s)} & \textbf{GFLOPS médio} & \textbf{Desvio GFLOPS} \\
 \midrule
-512 & 3 & 0,003135 & 92,227 \\
-1024 & 3 & 0,009491 & 229,243 \\
-2048 & 3 & 0,056025 & 306,783 \\
+512 & 3 & 0,003135 & 92,227 & 27,653 \\
+1024 & 3 & 0,009491 & 229,243 & 32,185 \\
+2048 & 3 & 0,056025 & 306,783 & 8,005 \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.85\textwidth]{figures/benchmark_gflops.png}
+\caption{Desempenho médio em GFLOPS para cada ordem de matriz avaliada.}
+\label{fig:benchmark-gflops}
+\end{figure}
 
 Os resultados indicam aumento da taxa estimada de GFLOPS conforme a ordem da matriz cresce, o que sugere melhor aproveitamento da biblioteca numérica em matrizes maiores. Como a GPU integrada não foi utilizada diretamente pelo benchmark, os valores representam uma medição inicial em CPU e servem como linha de base para comparações futuras com aceleração por GPU ou execução em infraestrutura HPC.

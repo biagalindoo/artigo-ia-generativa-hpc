@@ -1,7 +1,9 @@
 \section{Discussão}
 \label{sec:discussao}
 
-Os resultados obtidos mostram que a taxa estimada de desempenho aumentou conforme a ordem das matrizes cresceu. Para matrizes de ordem 512, a média foi de 92,227 GFLOPS, enquanto para matrizes de ordem 2048 a média chegou a 306,783 GFLOPS. Esse comportamento sugere que operações maiores permitem melhor aproveitamento das rotinas otimizadas utilizadas pelo NumPy, reduzindo proporcionalmente o impacto de custos fixos de chamada, alocação e preparação dos dados.
+Os resultados obtidos mostram que a taxa estimada de desempenho aumentou conforme a ordem das matrizes cresceu, como sintetizado na Figura~\ref{fig:benchmark-gflops}. Para matrizes de ordem 512, a média foi de 92,227 GFLOPS, enquanto para matrizes de ordem 2048 a média chegou a 306,783 GFLOPS. Esse comportamento sugere que operações maiores permitem melhor aproveitamento das rotinas otimizadas utilizadas pelo NumPy, reduzindo proporcionalmente o impacto de custos fixos de chamada, alocação e preparação dos dados.
+
+A variação entre repetições também foi diferente conforme o tamanho da matriz. O desvio padrão foi maior nas ordens 512 e 1024, enquanto a matriz de ordem 2048 apresentou menor variação relativa. Uma interpretação possível é que execuções muito curtas ficam mais sensíveis a pequenas interferências do sistema operacional e do ambiente de execução, enquanto cargas maiores tendem a produzir medições mais estáveis.
 
 Embora o experimento não execute um modelo generativo completo, a multiplicação de matrizes é uma operação central em redes neurais modernas. Assim, o benchmark permite observar, em escala controlada, a relação entre carga computacional, biblioteca numérica e infraestrutura disponível. A máquina avaliada possui CPU Intel Core i7-1360P, 32 GB de RAM e GPU integrada Intel Iris Xe; porém, a execução realizada utilizou CPU, não aceleração explícita por GPU.
 
