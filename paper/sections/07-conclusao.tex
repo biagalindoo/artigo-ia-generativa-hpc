@@ -1,6 +1,8 @@
 \section{Conclusão}
 \label{sec:conclusao}
 
-Este artigo propõe uma análise experimental da relação entre infraestrutura de hardware e cargas de IA generativa em um contexto introdutório de HPC. A partir da caracterização do ambiente e da coleta de métricas, espera-se identificar gargalos e discutir como componentes de hardware influenciam a execução de cargas computacionais intensivas.
+Este artigo analisou a relação entre infraestrutura de hardware e cargas computacionais associadas à IA generativa em um contexto introdutório de HPC. A partir da caracterização de uma máquina local e da execução de um benchmark de multiplicação de matrizes com NumPy, foi possível observar o comportamento de uma operação fundamental para redes neurais modernas.
 
-Como trabalhos futuros, pretende-se ampliar a quantidade de experimentos, comparar diferentes configurações de hardware e avaliar cargas com maior proximidade de aplicações reais de IA generativa.
+Os resultados mostraram que o desempenho estimado cresceu de 92,227 GFLOPS, em matrizes de ordem 512, para 306,783 GFLOPS, em matrizes de ordem 2048. Esse comportamento indica que matrizes maiores tendem a aproveitar melhor as rotinas numéricas otimizadas, embora o experimento tenha sido limitado à execução em CPU. A comparação com dados documentados do NVIDIA DGX H100 evidenciou a diferença de escala entre uma máquina local e uma infraestrutura dedicada para IA e HPC.
+
+Como contribuição, o trabalho apresenta uma metodologia reprodutível para caracterizar o ambiente, executar uma carga representativa e relacionar os resultados com conceitos de arquitetura de computadores e computação de alto desempenho. Como trabalhos futuros, pretende-se avaliar modelos generativos reais de pequeno porte, incluir medições de uso de memória e energia, explorar aceleração por GPU e comparar diferentes ambientes computacionais.
