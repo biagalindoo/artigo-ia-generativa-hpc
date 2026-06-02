@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 
 INPUT = ROOT / "data" / "benchmark_matriz_numpy.csv"
 SUMMARY = ROOT / "data" / "benchmark_matriz_resumo.csv"
-FIGURE = ROOT / "paper" / "figures" / "benchmark_gflops.png"
+FIGURE = ROOT / "paper" / "figures" / "benchmark-gflops.png"
 
 
 def load_rows() -> list[dict[str, str]]:
