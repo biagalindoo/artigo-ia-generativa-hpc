@@ -1,12 +1,22 @@
 \section{Metodologia}
 \label{sec:metodologia}
 
+\subsection{Desenho experimental}
+
 A metodologia do trabalho será organizada em quatro etapas: caracterização do ambiente, definição da carga experimental, coleta de métricas e análise dos resultados. A escolha por esse fluxo busca garantir reprodutibilidade mínima, permitindo que os resultados sejam interpretados a partir das condições reais de execução observadas em laboratório.
 
 Na caracterização do ambiente, serão registrados os componentes de hardware e software utilizados nos experimentos. Devem ser documentados processador, memória principal, armazenamento, GPU quando disponível, sistema operacional, bibliotecas, ferramentas de monitoramento e versões relevantes.
 
 Na definição da carga experimental, será selecionada uma tarefa relacionada à IA generativa ou uma carga computacional representativa. Possíveis opções incluem inferência com modelo de linguagem de pequeno porte, execução de operação matricial/tensorial, benchmark sintético ou comparação entre execução com diferentes configurações de recursos. A carga escolhida deverá ser compatível com as limitações do laboratório, evitando a necessidade de treinamento de modelos de grande escala.
 
+\subsection{Métricas coletadas}
+
 Durante a coleta, serão medidas métricas como tempo de execução, uso de CPU, uso de memória, utilização de GPU, vazão de armazenamento e temperatura, conforme a disponibilidade das ferramentas do laboratório. Cada experimento deverá ser repetido quando possível, registrando variações e condições de execução. Os dados coletados serão mantidos em formato tabular ou em logs, de modo a facilitar a validação e a posterior construção de gráficos e tabelas.
 
+As métricas serão organizadas em dois grupos. O primeiro grupo descreve o ambiente, incluindo componentes físicos, sistema operacional e ferramentas. O segundo grupo descreve o comportamento da carga durante a execução, incluindo tempo total, utilização média ou máxima dos recursos e observações sobre gargalos percebidos.
+
+\subsection{Critérios de análise}
+
 Por fim, os dados serão organizados em tabelas e analisados com foco na identificação de gargalos. A análise buscará relacionar os resultados às características da infraestrutura e aos conceitos de HPC discutidos na fundamentação teórica.
+
+Quando houver mais de uma configuração experimental, a comparação será feita observando variação de tempo de execução, estabilidade da execução, consumo de recursos e limitações encontradas. Caso apenas uma configuração esteja disponível, a análise terá caráter descritivo, enfatizando a interpretação dos gargalos observados no ambiente real.
