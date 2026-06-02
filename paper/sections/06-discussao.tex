@@ -1,6 +1,10 @@
 \section{Discussão}
 \label{sec:discussao}
 
-A discussão será desenvolvida a partir dos dados coletados. Espera-se analisar se os resultados indicam gargalos associados ao processamento, à memória, ao armazenamento ou à ausência/presença de aceleração por GPU.
+Os resultados obtidos mostram que a taxa estimada de desempenho aumentou conforme a ordem das matrizes cresceu. Para matrizes de ordem 512, a média foi de 92,227 GFLOPS, enquanto para matrizes de ordem 2048 a média chegou a 306,783 GFLOPS. Esse comportamento sugere que operações maiores permitem melhor aproveitamento das rotinas otimizadas utilizadas pelo NumPy, reduzindo proporcionalmente o impacto de custos fixos de chamada, alocação e preparação dos dados.
 
-Também serão discutidas limitações do estudo, como escala reduzida do ambiente de laboratório, disponibilidade de hardware, tamanho dos modelos executados e quantidade de repetições experimentais. Essas limitações serão importantes para delimitar o alcance dos resultados sem comprometer a validade da análise educacional.
+Embora o experimento não execute um modelo generativo completo, a multiplicação de matrizes é uma operação central em redes neurais modernas. Assim, o benchmark permite observar, em escala controlada, a relação entre carga computacional, biblioteca numérica e infraestrutura disponível. A máquina avaliada possui CPU Intel Core i7-1360P, 32 GB de RAM e GPU integrada Intel Iris Xe; porém, a execução realizada utilizou CPU, não aceleração explícita por GPU.
+
+A comparação com os dados de referência do NVIDIA DGX H100 evidencia a diferença de escala entre uma máquina local e uma infraestrutura especializada para IA. Enquanto o ambiente local oferece uma linha de base acessível para experimentação, sistemas dedicados combinam múltiplas GPUs, grande volume de memória de GPU, rede de alta velocidade e pilha de software otimizada. Essa diferença reforça que cargas reais de IA generativa em grande escala dependem de uma infraestrutura integrada, e não apenas de um processador isolado.
+
+As principais limitações do estudo são a execução em apenas uma máquina, o uso de um benchmark sintético e a ausência de medição direta de consumo energético, temperatura e utilização de GPU. Ainda assim, os dados coletados cumprem o objetivo de demonstrar uma metodologia inicial de avaliação técnica e fornecem uma base para experimentos futuros com modelos generativos reais, aceleração por GPU ou comparação entre diferentes ambientes computacionais.
