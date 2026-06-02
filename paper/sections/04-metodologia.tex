@@ -3,7 +3,7 @@
 
 \subsection{Desenho experimental}
 
-A metodologia do trabalho foi organizada em quatro etapas: caracterização do ambiente, definição da carga experimental, coleta de métricas e análise dos resultados. A escolha por esse fluxo buscou garantir reprodutibilidade mínima, permitindo que os resultados fossem interpretados a partir das condições reais de execução observadas.
+O experimento foi conduzido em quatro etapas: caracterização do ambiente, definição da carga experimental, coleta de métricas e análise dos resultados. Esse fluxo foi adotado para que os valores medidos pudessem ser interpretados a partir das condições reais da máquina usada no teste.
 
 Na caracterização do ambiente, foram registrados os componentes de hardware e software utilizados no experimento, incluindo processador, memória principal, armazenamento, GPU integrada, sistema operacional, bibliotecas e versões relevantes.
 
@@ -13,11 +13,11 @@ Neste estudo inicial, a carga experimental adotada foi a multiplicação de matr
 
 \subsection{Métricas coletadas}
 
-Durante a coleta, mediu-se o tempo de execução de cada multiplicação de matrizes e calculou-se a taxa estimada de GFLOPS. Cada tamanho de matriz foi executado com 30 repetições válidas, após o descarte de cinco execuções de aquecimento. Os dados brutos foram armazenados em formato CSV no repositório, permitindo inspeção e reprocessamento posterior.
+Durante a coleta, mediu-se o tempo de execução de cada multiplicação de matrizes e calculou-se a taxa estimada de GFLOPS. Os dados brutos foram armazenados em formato CSV no repositório, permitindo inspeção e reprocessamento posterior.
 
 As métricas foram organizadas em dois grupos. O primeiro descreve o ambiente, incluindo componentes físicos, sistema operacional e ferramentas. O segundo descreve o comportamento da carga durante a execução, incluindo tempo total, média de GFLOPS e desvio padrão entre repetições.
 
-Foram executadas matrizes de ordem 512, 1024 e 2048, com 30 repetições válidas para cada tamanho. Antes das medições, cinco execuções de aquecimento foram descartadas para reduzir o efeito de inicialização da biblioteca numérica e do ambiente de execução. A taxa estimada de desempenho foi calculada pela aproximação $2n^3/t$, em que $n$ é a ordem da matriz e $t$ é o tempo de execução em segundos. O script de execução utiliza semente pseudoaleatória fixa, de modo que as matrizes geradas possam ser reproduzidas.
+Foram executadas matrizes de ordem 512, 1024 e 2048. Para cada tamanho, cinco execuções de aquecimento foram descartadas e, em seguida, foram registradas 30 repetições válidas. Esse procedimento buscou reduzir o efeito de inicialização da biblioteca numérica e do ambiente de execução. A taxa estimada de desempenho foi calculada pela aproximação $2n^3/t$, em que $n$ é a ordem da matriz e $t$ é o tempo de execução em segundos. O script de execução utiliza semente pseudoaleatória fixa, de modo que as matrizes geradas possam ser reproduzidas.
 
 Durante os testes, a mesma máquina, o mesmo sistema operacional e as mesmas versões de Python e bibliotecas foram mantidos. Não foram executadas comparações em paralelo com outras cargas intencionais. Ainda assim, por se tratar de um sistema operacional de uso geral, processos em segundo plano, política de energia, uso de swap e variações térmicas não foram controlados com o mesmo rigor de um ambiente de laboratório dedicado.
 
