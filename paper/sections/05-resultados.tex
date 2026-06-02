@@ -3,6 +3,26 @@
 
 Esta seção será preenchida após a execução dos experimentos e coleta das métricas. Nesta versão inicial, as tabelas indicam quais informações serão consolidadas no artigo final.
 
+Para evitar confusão entre dados próprios e dados externos, os resultados experimentais deste artigo serão separados de dados de referência obtidos em documentação técnica. A Tabela~\ref{tab:referencia-dgx} apresenta um exemplo real de infraestrutura especializada para IA, usado apenas como referência de escala.
+
+\begin{table}[ht]
+\centering
+\caption{Dados reais de referência do sistema NVIDIA DGX H100~\cite{nvidiaDgxH100}}
+\label{tab:referencia-dgx}
+\begin{tabular}{ll}
+\toprule
+\textbf{Item} & \textbf{Valor documentado} \\
+\midrule
+GPUs & 8x NVIDIA H100 Tensor Core \\
+Memória total de GPU & 640 GB \\
+Memória do sistema & 2 TB \\
+Desempenho & 32 petaFLOPS FP8 \\
+Consumo máximo & Aproximadamente 10,2 kW \\
+Rede & InfiniBand 400 Gb/s ou Ethernet 200 Gb/s \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \begin{table}[ht]
 \centering
 \caption{Caracterização do ambiente experimental}
