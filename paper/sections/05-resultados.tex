@@ -48,7 +48,7 @@ Carga experimental & Multiplicação de matrizes \textit{float32} \\
 \label{tab:benchmark-matriz}
 \begin{tabular}{rrrrr}
 \toprule
-\textbf{Ordem} & \textbf{n} & \textbf{Tempo médio (s)} & \textbf{GFLOPS médio} & \textbf{IC95 GFLOPS} \\
+\textbf{Ordem} & \textbf{Rep.} & \shortstack{\textbf{Tempo}\\\textbf{médio (s)}} & \shortstack{\textbf{GFLOPS médio}\\\textbf{($\pm$ DP)}} & \shortstack{\textbf{IC95}\\\textbf{da média}} \\
 \midrule
 512 & 30 & 0,001895 & 150,768 $\pm$ 36,307 & $\pm$ 13,557 \\
 1024 & 30 & 0,006228 & 350,665 $\pm$ 45,840 & $\pm$ 17,117 \\
@@ -56,6 +56,8 @@ Carga experimental & Multiplicação de matrizes \textit{float32} \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+Na Tabela~\ref{tab:benchmark-matriz}, Rep. indica o número de repetições válidas, DP indica o desvio-padrão dessas repetições e IC95 indica a margem do intervalo de confiança de 95\% para a média de GFLOPS.
 
 \begin{table}[ht]
 \centering
@@ -74,8 +76,8 @@ Carga experimental & Multiplicação de matrizes \textit{float32} \\
 \begin{figure}[ht]
 \centering
 \includegraphics[width=.85\textwidth]{figures/benchmark-gflops.png}
-\caption{Desempenho médio em GFLOPS para cada ordem de matriz avaliada, com barras de erro representando IC95.}
+\caption{Desempenho médio em GFLOPS para cada ordem de matriz avaliada, com barras de erro representando a margem do IC95.}
 \label{fig:benchmark-gflops}
 \end{figure}
 
-Os resultados indicam aumento da taxa estimada de GFLOPS conforme a ordem da matriz cresce, o que sugere melhor aproveitamento da biblioteca numérica em matrizes maiores. Os testes de hipótese indicaram diferença estatisticamente significativa entre as condições adjacentes avaliadas. Como a GPU integrada não foi utilizada diretamente pelo benchmark, os valores representam uma medição inicial em CPU e servem como linha de base para comparações futuras com aceleração por GPU ou execução em infraestrutura HPC.
+Os resultados indicam aumento da taxa estimada de GFLOPS conforme a ordem da matriz cresce, mas esse aumento não foi linear. A maior variação ocorreu entre as ordens 512 e 1024, enquanto o ganho entre 1024 e 2048 foi menor. Os testes de hipótese indicaram diferença estatisticamente significativa entre as condições adjacentes avaliadas. Como a GPU integrada não foi utilizada diretamente pelo benchmark, os valores representam uma medição inicial em CPU e servem como linha de base para comparações futuras com aceleração por GPU ou execução em infraestrutura HPC.
