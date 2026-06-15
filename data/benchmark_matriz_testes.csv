@@ -1,3 +1,3 @@
 comparison,test,statistic,p_value,alpha,reject_h0
-512_vs_1024,Welch t-test,-18.723452,1.482744e-25,0.05,True
-1024_vs_2048,Welch t-test,-2.469474,1.796640e-02,0.05,True
+512_vs_1024,Welch t-test,-1.026567,3.094579e-01,0.05,False
+1024_vs_2048,Welch t-test,-14.916104,2.025974e-21,0.05,True

@@ -32,11 +32,11 @@ Rede & InfiniBand 400 Gb/s ou Ethernet 200 Gb/s \\
 \textbf{Item} & \textbf{Descrição} \\
 \midrule
 CPU & Intel Core i7-1360P, 12 núcleos e 16 threads \\
-Memória RAM & 32 GB \\
+Memória RAM & 32 GB físicos; 15 GiB visíveis no WSL2 \\
 GPU & Intel Iris Xe Graphics integrada \\
 Armazenamento & NVMe KIOXIA 1024 GB \\
-Sistema operacional & Windows 11 Pro 10.0.26200, 64 bits \\
-Ferramentas de medição & Python 3.11.9, NumPy 2.1.2, SciPy 1.14.1 \\
+Sistema operacional & Ubuntu 24.04 LTS no WSL2, kernel 6.18.33.1 \\
+Ferramentas de medição & Python 3.12.3, NumPy 1.26.4, SciPy 1.11.4, OpenBLAS 0.3.26 \\
 Carga experimental & Multiplicação de matrizes \textit{float32} \\
 \bottomrule
 \end{tabular}
@@ -50,9 +50,9 @@ Carga experimental & Multiplicação de matrizes \textit{float32} \\
 \toprule
 \textbf{Ordem} & \textbf{Rep.} & \shortstack{\textbf{Tempo}\\\textbf{médio (s)}} & \shortstack{\textbf{GFLOPS médio}\\\textbf{($\pm$ DP)}} & \shortstack{\textbf{IC95}\\\textbf{da média}} \\
 \midrule
-512 & 30 & 0,001895 & 150,768 $\pm$ 36,307 & $\pm$ 13,557 \\
-1024 & 30 & 0,006228 & 350,665 $\pm$ 45,840 & $\pm$ 17,117 \\
-2048 & 30 & 0,046165 & 373,168 $\pm$ 19,745 & $\pm$ 7,373 \\
+512 & 30 & 0,010609 & 28,595 $\pm$ 10,470 & $\pm$ 3,910 \\
+1024 & 30 & 0,081517 & 32,082 $\pm$ 15,385 & $\pm$ 5,745 \\
+2048 & 30 & 0,188236 & 94,367 $\pm$ 16,923 & $\pm$ 6,319 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -67,8 +67,8 @@ Na Tabela~\ref{tab:benchmark-matriz}, Rep. indica o número de repetições vál
 \toprule
 \textbf{Comparação} & \textbf{Teste} & \textbf{p-valor} & \textbf{Rejeita $H_0$?} \\
 \midrule
-512 vs. 1024 & Welch $t$ & $1{,}48 \times 10^{-25}$ & Sim \\
-1024 vs. 2048 & Welch $t$ & 0,017966 & Sim \\
+512 vs. 1024 & Welch $t$ & 0,309458 & Não \\
+1024 vs. 2048 & Welch $t$ & $2{,}03 \times 10^{-21}$ & Sim \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -80,4 +80,4 @@ Na Tabela~\ref{tab:benchmark-matriz}, Rep. indica o número de repetições vál
 \label{fig:benchmark-gflops}
 \end{figure}
 
-Os resultados indicam aumento da taxa estimada de GFLOPS conforme a ordem da matriz cresce, mas esse aumento não foi linear. A maior variação ocorreu entre as ordens 512 e 1024, enquanto o ganho entre 1024 e 2048 foi menor. Os testes de hipótese indicaram diferença estatisticamente significativa entre as condições adjacentes avaliadas. Como a GPU integrada não foi utilizada diretamente pelo benchmark, os valores representam uma medição inicial em CPU e servem como linha de base para comparações futuras com aceleração por GPU ou execução em infraestrutura HPC.
+Os resultados indicam aumento da taxa estimada de GFLOPS conforme a ordem da matriz cresce, mas esse aumento não foi linear. As ordens 512 e 1024 apresentaram médias próximas, sem diferença estatisticamente significativa no teste aplicado. A diferença mais clara ocorreu entre 1024 e 2048, quando a matriz maior passou a aproveitar melhor a rotina numérica usada pelo NumPy/OpenBLAS. Como a GPU integrada não foi utilizada diretamente pelo benchmark, os valores representam uma medição em CPU e servem como linha de base para comparações futuras com aceleração por GPU ou execução em infraestrutura HPC.

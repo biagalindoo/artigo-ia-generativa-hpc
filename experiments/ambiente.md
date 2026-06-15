@@ -5,7 +5,7 @@ Este arquivo registra o ambiente usado nos experimentos do artigo.
 ## Identificação
 
 - **Local:** máquina local do autor
-- **Data da coleta:** 2 jun. 2026
+- **Data da coleta:** 15 jun. 2026
 - **Responsáveis pela coleta:** autor/equipe do artigo
 
 ## Hardware
@@ -13,8 +13,8 @@ Este arquivo registra o ambiente usado nos experimentos do artigo.
 | Componente | Especificação |
 |---|---|
 | Máquina | Dell Inc. XPS 9320 |
-| CPU | 13th Gen Intel(R) Core(TM) i7-1360P, 12 núcleos, 16 threads, 2,2 GHz |
-| Memória RAM | 33.949.044.736 bytes, aproximadamente 32 GB |
+| CPU | 13th Gen Intel(R) Core(TM) i7-1360P, 16 CPUs lógicas visíveis no WSL2 |
+| Memória RAM | 33.949.044.736 bytes físicos, aproximadamente 32 GB; cerca de 15 GiB visíveis no WSL2 |
 | GPU | Intel(R) Iris(R) Xe Graphics, memória reportada de 2.147.479.552 bytes |
 | Armazenamento | NVMe KXG80ZNV1T02 NVMe KIOXIA 1024GB, 1.024.203.640.320 bytes |
 | Rede | Não avaliada neste experimento |
@@ -25,14 +25,15 @@ Este arquivo registra o ambiente usado nos experimentos do artigo.
 
 | Item | Versão/descrição |
 |---|---|
-| Sistema operacional | Microsoft Windows 11 Pro 10.0.26200, 64 bits |
-| Linguagem/runtime | Python 3.11.9 |
-| Bibliotecas | NumPy 2.1.2; Matplotlib 3.10.9; SciPy 1.14.1 |
+| Sistema operacional | Ubuntu 24.04 LTS no WSL2, kernel 6.18.33.1-microsoft-standard-WSL2 |
+| Linguagem/runtime | Python 3.12.3 |
+| Bibliotecas | NumPy 1.26.4; Matplotlib 3.6.3; SciPy 1.11.4; OpenBLAS 0.3.26 |
 | Ferramentas de medição | Scripts `experiments/benchmark_matriz_numpy.py` e `experiments/analisar_benchmark_matriz.py` |
 | Ferramenta de IA generativa | Não utilizada diretamente; carga matricial representativa |
 
 ## Observações
 
-- O experimento executa multiplicação de matrizes com NumPy em CPU.
+- O experimento executa multiplicação de matrizes com NumPy/OpenBLAS em CPU.
 - A GPU integrada foi identificada, mas não foi usada diretamente pelo benchmark.
+- A execução ocorreu no Ubuntu 24.04 LTS via WSL2, com swap disponível e sem isolamento rígido de processos do sistema hospedeiro.
 - Os resultados representam a máquina local testada e não devem ser generalizados para clusters HPC.

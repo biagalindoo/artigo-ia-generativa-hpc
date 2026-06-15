@@ -25,6 +25,24 @@ Investigar como características de infraestrutura de hardware impactam a execu�
 - Dados, scripts ou registros usados nos experimentos.
 - Comprovante de submissão, após revisão do professor.
 
+## Ambiente e reprodução
+
+Os resultados atuais foram coletados em Ubuntu 24.04 LTS no WSL2, com Python 3.12.3, NumPy 1.26.4, SciPy 1.11.4, Matplotlib 3.6.3 e OpenBLAS 0.3.26.
+
+Comandos usados para preparar o ambiente Linux:
+
+```bash
+sudo apt-get update
+sudo apt-get install -y python3-numpy python3-scipy python3-matplotlib libopenblas0-pthread libopenblas-dev
+```
+
+Para reproduzir os dados:
+
+```bash
+python3 experiments/benchmark_matriz_numpy.py
+python3 experiments/analisar_benchmark_matriz.py
+```
+
 ## Estrutura do repositório
 
 ```text

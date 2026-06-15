@@ -9,7 +9,7 @@ Na caracterização do ambiente, foram registrados os componentes de hardware e 
 
 Na definição da carga experimental, optou-se por uma tarefa computacional representativa em vez de executar treinamento de modelo generativo de grande escala. Essa decisão tornou o experimento compatível com uma máquina local e permitiu isolar uma operação central em redes neurais: a multiplicação de matrizes.
 
-Neste estudo inicial, a carga experimental adotada foi a multiplicação de matrizes densas em precisão \textit{float32}, implementada com NumPy 2.1.2 em Python 3.11.9. Embora não seja uma aplicação completa de IA generativa, essa operação é representativa porque modelos baseados em redes neurais dependem intensamente de operações matriciais e tensoriais durante treinamento e inferência.
+Neste estudo inicial, a carga experimental adotada foi a multiplicação de matrizes densas em precisão \textit{float32}, implementada com NumPy 1.26.4 em Python 3.12.3, sobre Ubuntu 24.04 LTS no WSL2. A biblioteca BLAS utilizada foi OpenBLAS 0.3.26. Embora não seja uma aplicação completa de IA generativa, essa operação é representativa porque modelos baseados em redes neurais dependem intensamente de operações matriciais e tensoriais durante treinamento e inferência.
 
 \subsection{Métricas coletadas}
 
@@ -19,7 +19,7 @@ As métricas foram organizadas em dois grupos. O primeiro descreve o ambiente, i
 
 Foram executadas matrizes de ordem 512, 1024 e 2048. Para cada tamanho, cinco execuções de aquecimento foram descartadas e, em seguida, foram registradas 30 repetições válidas. Esse procedimento buscou reduzir o efeito de inicialização da biblioteca numérica e do ambiente de execução. A taxa estimada de desempenho foi calculada pela aproximação $2n^3/t$, em que $n$ é a ordem da matriz e $t$ é o tempo de execução em segundos. O script de execução utiliza semente pseudoaleatória fixa, de modo que as matrizes geradas possam ser reproduzidas.
 
-Durante os testes, a mesma máquina, o mesmo sistema operacional e as mesmas versões de Python e bibliotecas foram mantidos. Não foram executadas comparações em paralelo com outras cargas intencionais. Ainda assim, por se tratar de um sistema operacional de uso geral, processos em segundo plano, política de energia, uso de swap e variações térmicas não foram controlados com o mesmo rigor de um ambiente de laboratório dedicado.
+Durante os testes, a mesma máquina, a mesma distribuição Linux e as mesmas versões de Python e bibliotecas foram mantidas. Não foram executadas comparações em paralelo com outras cargas intencionais. Ainda assim, por se tratar de uma execução local em WSL2, processos do sistema hospedeiro, uso de swap e variações térmicas não foram controlados com o mesmo rigor de um ambiente de laboratório dedicado.
 
 \subsection{Critérios de análise}
 
