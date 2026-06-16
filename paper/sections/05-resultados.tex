@@ -33,10 +33,12 @@ Rede & InfiniBand 400 Gb/s ou Ethernet 200 Gb/s \\
 \midrule
 CPU & Intel Core i7-1360P, 12 núcleos e 16 threads \\
 Memória RAM & 32 GB físicos; 15 GiB visíveis no WSL2 \\
+Cache & L1d 384 KiB, L1i 256 KiB, L2 10 MiB, L3 18 MiB \\
 GPU & Intel Iris Xe Graphics integrada \\
 Armazenamento & NVMe KIOXIA 1024 GB \\
 Sistema operacional & Ubuntu 24.04 LTS no WSL2, kernel 6.18.33.1 \\
 Ferramentas de medição & Python 3.12.3, NumPy 1.26.4, SciPy 1.11.4, OpenBLAS 0.3.26 \\
+Paralelismo numérico & OpenBLAS com 16 threads \\
 Carga experimental & Multiplicação de matrizes \textit{float32} \\
 \bottomrule
 \end{tabular}
@@ -80,4 +82,4 @@ Na Tabela~\ref{tab:benchmark-matriz}, Rep. indica o número de repetições vál
 \label{fig:benchmark-gflops}
 \end{figure}
 
-Os resultados indicam aumento da taxa estimada de GFLOPS conforme a ordem da matriz cresce, mas esse aumento não foi linear. As ordens 512 e 1024 apresentaram médias próximas, sem diferença estatisticamente significativa no teste aplicado. A diferença mais clara ocorreu entre 1024 e 2048, quando a matriz maior passou a aproveitar melhor a rotina numérica usada pelo NumPy/OpenBLAS. Como a GPU integrada não foi utilizada diretamente pelo benchmark, os valores representam uma medição em CPU e servem como linha de base para comparações futuras com aceleração por GPU ou execução em infraestrutura HPC.
+Os resultados indicam aumento da taxa estimada de GFLOPS conforme a ordem da matriz cresce, mas esse aumento não foi linear. As ordens 512 e 1024 apresentaram médias próximas, sem diferença estatisticamente significativa no teste aplicado. A diferença mais clara ocorreu entre 1024 e 2048, quando o desempenho passou de 32,082 para 94,367 GFLOPS, ganho aproximado de 194\%. Como a GPU integrada não foi utilizada diretamente pelo benchmark, os valores representam uma medição em CPU com 16 threads no OpenBLAS e servem como linha de base para comparações futuras com aceleração por GPU ou execução em infraestrutura HPC.
